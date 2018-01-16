@@ -45,6 +45,11 @@ def index():
 
     return render_template('new_post.html')
 
+@app.route('/blog/<int:id>')
+def solo_post(id=None):
+    blog = Blog.query.filter_by(id=id).first()
+    return render_template('solo.html', blog=blog)
+
 
 if __name__ == '__main__':
     app.run()
